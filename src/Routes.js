@@ -59,9 +59,11 @@ router.put('/productos',(req,res)=>{
     res.json(producto);
 })
 
-router.delete('/productos', (req,res)=>{
-    const { id } = req.body;
-    let producto = productos.find(prod => prod.id === id);
+router.delete('/productos/delete/:id', (req,res)=>{
+    const { id } = req.params;
+    //console.log(id);
+    let producto = productos.find(prod => prod.id == id);
+    //console.log(producto);
     if(!producto){
         res.json({error: "El producto a eliminar no existe"});
     }
